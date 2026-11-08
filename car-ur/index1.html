@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Accidents on the Road - Choropleth</title>
+    <script src='https://d3js.org/d3.v4.js'></script>
+    <script src='https://d3js.org/topojson.v1.js'></script>
+    <script src='https://d3js.org/colorbrewer.v1.js'></script>
+</head>
+<body>
+<script type='text/javascript'>
+var width = 960
+var height = 500
+var colorDomain = d3.range(300, 1501, 300)
+
+var color = d3.scaleThreshold()
+  .domain(colorDomain)
+  .range(colorbrewer['RdYlGn'][6].reverse())
+
+d3.queue()
+  .defer(d3.json, 'http://d3-js.ru/data/russia.json')
+  .defer(d3.csv, 'http://d3-js.ru/data/accidents.csv')
+  .await(ready)
+
+function ready(error, map, data) {
+  var svg = d3.select('body')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+
+  var projection = d3.geoAlbers()
+    .rotate([-105, 0])
+    .center([-10, 65])
+    .parallels([52, 64])
+    .scale(700)
+    .translate([width * 0.5, height * 0.5])
+
+  var rateById = {}
+  data.forEach(function (d) {
+    rateById[d.RegionCode] = Number(d.Deaths)
+  })
+
+  var path = d3.geoPath()
+    .projection(projection)
+  
+  var mapData = topojson.feature(map, map.objects.russia).features
+  
+  svg.append('g')
+    .selectAll('path')
+    .data(mapData)
+    .enter()
+    .append('path')
+    .attr('stroke', 'white')
+    .attr('stroke-width', 1)
+    .attr('d', path)
+    .attr('fill', function (d) {
+      return color(rateById[d.properties.region])
+    })
+}
+</script>
+</body>
+</html>
