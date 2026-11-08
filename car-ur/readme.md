@@ -10,6 +10,8 @@ https://gist.github.com/barionleg/366f427d3a12f84152353918a0f84d16
 
 https://gist.github.com/barionleg/0d987c16ec048c42f0e3e850654112b1
 
+https://gist.github.com/barionleg/55251bf3c6e0151d2d22ce74a3545306
+
 https://github.com/barionleg/baegaistview/wiki
 
 https://barionleg.github.io/baegaistview/
