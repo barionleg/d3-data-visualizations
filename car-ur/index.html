@@ -3,9 +3,9 @@
 <head>
     <meta charset='utf-8'>
     <title>Accidents on the Road - Choropleth</title>
-    <script src='http://d3js.org/d3.v4.js'></script>
-    <script src='http://d3js.org/topojson.v1.js'></script>
-    <script src='http://d3js.org/colorbrewer.v1.js'></script>
+    <script src='https://d3js.org/d3.v4.js'></script>
+    <script src='https://d3js.org/topojson.v1.js'></script>
+    <script src='https://d3js.org/colorbrewer.v1.js'></script>
 </head>
 <body>
 <script type='text/javascript'>
@@ -18,9 +18,9 @@ var color = d3.scaleThreshold()
   .domain(colorDomain)
 
 d3.queue()
-  .defer(d3.json, 'http://d3-js.ru/data/russia.json')
-  .defer(d3.csv, 'http://d3-js.ru/data/accidents.csv')
-  .defer(d3.tsv, 'http://d3-js.ru/data/cities.tsv')
+  .defer(d3.json, 'https://d3-js.ru/data/russia.json')
+  .defer(d3.csv, 'https://d3-js.ru/data/accidents.csv')
+  .defer(d3.tsv, 'https://d3-js.ru/data/cities.tsv')
   .await(ready)
 
 function drawMap(svg, map, cities, rateById, projection) {
