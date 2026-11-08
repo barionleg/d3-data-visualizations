@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Accidents on the Road - Choropleth</title>
+  <!--<script src='https://d3js.org/d3.v4.js'></script>-->
+    <script src='https://d3js.org/topojson.v1.js'></script>
+    <script src='https://d3js.org/colorbrewer.v1.js'></script>
+</head>
+<body>
+<script type='text/javascript'>
+var width = 960
+var height = 500
+var colorDomain = d3.range(300, 1501, 300)
+
+var color = d3.scaleThreshold()
+  .range(colorbrewer['RdYlGn'][6].reverse())
+  .domain(colorDomain)
+
+var data = [{ "Weather Condition": "rainy", "property1": "val1", "property2": "val2" }, { "Weather Condition": "sunny", "property1": "val1", "property2": "val2" }, { "Weather Condition": "sunny", "property1": "val1", "property2": "val2" }]; // put the snippet below in your d3.csv function var expensesByName = d3.nest() .key(function(d) { return d["Weather Condition"]; }) .entries(data); console.log(expensesByName);
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+
+</body>
+</html>
